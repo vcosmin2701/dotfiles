@@ -1,0 +1,15 @@
+#!/usr/bin/env zsh
+
+SKETCHYBAR_CONFIG="$HOME/.config/sketchybar"
+
+# Choose the laptop config only when the built-in panel is actually active.
+# The internal display shows up in SPDisplaysDataType as "Color LCD" or
+# "Built-in Retina Display". In clamshell (lid closed, external only) it is
+# absent, so we fall through to the desktop config.
+DISPLAYS=$(system_profiler SPDisplaysDataType 2>/dev/null)
+
+if echo "$DISPLAYS" | grep -qiE "Color LCD|Built-in Retina|Built-In Liquid Retina"; then
+    source "$SKETCHYBAR_CONFIG/sketchybarrc-laptop"
+else
+    source "$SKETCHYBAR_CONFIG/sketchybarrc-desktop"
+fi

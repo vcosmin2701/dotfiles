@@ -1,0 +1,8 @@
+# Local backups produced by install.sh
+*.backup-*
+
+# SketchyBar local backups
+*.bak
+
+# macOS cruft
+.DS_Store
