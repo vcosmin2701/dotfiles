@@ -15,6 +15,7 @@ aerospace/
   .aerospace.toml        →  ~/.aerospace.toml
   config/                →  ~/.config/aerospace/
     center-window.sh
+    limit-windows.sh     # caps each workspace at 3 tiled windows (see below)
 sketchybar/              →  ~/.config/sketchybar/
   sketchybarrc           # picks laptop vs desktop based on active display
   sketchybarrc-laptop
@@ -27,6 +28,18 @@ sketchybar/              →  ~/.config/sketchybar/
 `sketchybarrc` auto-detects whether the built-in laptop display is active and
 sources `sketchybarrc-laptop` or `sketchybarrc-desktop` accordingly — so the same
 repo works on every machine with no per-host edits.
+
+### 3-window-per-workspace limit
+
+`limit-windows.sh` keeps each workspace at **at most 3 tiled windows** so a busy
+workspace never gets crowded. It's wired into AeroSpace via a catch-all
+`on-window-detected` rule at the bottom of `.aerospace.toml`: when a new window
+would make the 4th on its workspace, the script moves that window to the next
+free workspace (lowest-numbered empty one) and follows it there. The existing
+layout is left untouched, and if there's no empty workspace the window just
+stays put — nothing is ever hidden or lost. Floating apps (System Settings,
+Calculator, etc.) match their own float rules first and don't count toward the
+limit. Change the cap by editing `MAX_WINDOWS` at the top of the script.
 
 ## Setup on a new laptop
 

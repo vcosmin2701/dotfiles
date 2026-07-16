@@ -170,3 +170,15 @@ run = 'layout floating'
 [[on-window-detected]]
 if.app-id = 'com.apple.archiveutility'
 run = 'layout floating'
+
+# ---------------------------------------------------------------------------
+# Workspace window limit — keep at most 3 tiled windows per workspace.
+# This catch-all runs LAST: AeroSpace stops at the first matching rule, so the
+# float rules above are handled first (floating windows don't count toward the
+# tile limit). Any normal window falls through to here. The script counts the
+# windows already on the target workspace and, if it's full, relocates this new
+# window to the next free workspace so the existing layout is left intact.
+# ---------------------------------------------------------------------------
+[[on-window-detected]]
+if = 'true'
+run = 'exec-and-forget /bin/bash /Users/cosmin01/.config/aerospace/limit-windows.sh'
