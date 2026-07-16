@@ -113,7 +113,7 @@ sketchybar --add item clock right \
     --set clock \
     icon=󰃰 \
     icon.color=0xffed8796 \
-    update_freq=10 \
+    update_freq=1 \
     script="$PLUGIN_SHARED_DIR/clock.sh"
 
 sketchybar --add item battery right \
