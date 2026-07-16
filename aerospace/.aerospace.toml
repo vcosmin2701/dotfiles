@@ -44,7 +44,8 @@ outer.right      = 8
 # Per-monitor: external DELL has no macOS menu-bar offset, so it needs the full
 # bar height; the built-in laptop display already reserves the menu-bar strip.
 outer.top = [
-  { monitor.'DELL P3425WE' = 40 },
+  { monitor.'DELL P3425WE' = 40 },   # external Dell on the other laptop
+  { monitor.'DELL SE2723DS' = 40 },  # external Dell on this laptop
   { monitor.'built-in'     = 8  },
   40,  # fallback for any other external monitor
 ]
@@ -75,7 +76,7 @@ cmd-ctrl-slash = 'layout tiles horizontal vertical'   # toggle tiling orientatio
 cmd-ctrl-comma = 'layout accordion horizontal vertical' # toggle accordion
 cmd-ctrl-f     = 'layout floating tiling'             # toggle float for focused window
 cmd-ctrl-m     = 'fullscreen'                          # native-ish fullscreen (single window)
-cmd-ctrl-c     = 'exec-and-forget /Users/cosmin01/.config/aerospace/center-window.sh'  # float + center
+cmd-ctrl-c     = 'exec-and-forget $HOME/.config/aerospace/center-window.sh'  # float + center
 
 # Workspaces: focus 1..9 and 0
 cmd-ctrl-1 = 'workspace 1'
@@ -181,4 +182,4 @@ run = 'layout floating'
 # ---------------------------------------------------------------------------
 [[on-window-detected]]
 if = 'true'
-run = 'exec-and-forget /bin/bash /Users/cosmin01/.config/aerospace/limit-windows.sh'
+run = 'exec-and-forget /bin/bash $HOME/.config/aerospace/limit-windows.sh'
